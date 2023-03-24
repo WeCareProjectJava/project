@@ -10,52 +10,67 @@ package Services;
  */
 
 
+/*
+
+import fasterxml.jackson.databind.ObjectMapper;
+import fasterxml.jackson.databind.type.CollectionType;
+import models.Doctor;
+import models.Patient;
 import models.User;
+import Services.UserType;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class UserServices {
 
-    public User registerUser(User user) {
-        // Implement the logic to register a new user
-        // Save the user to the data layer (e.g., database or API)
-        return null; // Return the registered user with an assigned ID
+    private ObjectMapper objectMapper;
+    private File usersFile;
+
+    public UserServices() {
+        objectMapper = new ObjectMapper();
+        usersFile = new File("users.json");
     }
 
-    public User loginUser(String email, String password) {
-        // Implement the logic to authenticate a user based on email and password
-        // Retrieve the user from the data layer (e.g., database or API)
-        return null; // Return the authenticated user or null if the authentication fails
+    public User login(String email, String password, UserType userType) {
+        List<User> users = loadUsers();
+        Optional<User> user = users.stream()
+                .filter(u -> u.getEmail().equals(email) && u.getPassword().equals(password) && u.getUserType() == userType)
+                .findFirst();
+
+        return user.orElse(null);
     }
 
-    public User updateUser(User user) {
-        // Implement the logic to update a user's profile
-        // Update the user in the data layer (e.g., database or API)
-        return null; // Return the updated user
+    public boolean registerUser(User user) {
+        List<User> users = loadUsers();
+        users.add(user);
+        return saveUsers(users);
     }
 
-    public boolean changePassword(int userId, String oldPassword, String newPassword) {
-        // Implement the logic to change a user's password
-        // Update the user's password in the data layer (e.g., database or API)
-        return false; // Return true if the password change is successful, false otherwise
+    private List<User> loadUsers() {
+        if (usersFile.exists()) {
+            try {
+                CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, User.class);
+                return objectMapper.readValue(usersFile, listType);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return new ArrayList<>();
     }
 
-    public boolean deleteUser(int userId) {
-        // Implement the logic to delete a user
-        // Remove the user from the data layer (e.g., database or API)
-        return false; // Return true if the user deletion is successful, false otherwise
-    }
-
-    public User getUserById(int userId) {
-        // Implement the logic to retrieve a user by their ID
-        // Fetch the user from the data layer (e.g., database or API)
-        return null; // Return the user with the specified ID or null if not found
-    }
-
-    public List<User> getAllUsers() {
-        // Implement the logic to retrieve all users
-        // Fetch all users from the data layer (e.g., database or API)
-        return null; // Return a list of all users
+    private boolean saveUsers(List<User> users) {
+        try {
+            objectMapper.writeValue(usersFile, users);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
-
+*/
 

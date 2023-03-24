@@ -8,7 +8,7 @@ package Services;
  *
  * @author eya_o
  */
-
+/*
 
 import models.Communication;
 import fasterxml.jackson.core.type.TypeReference;
@@ -33,7 +33,7 @@ public class ConversationService {
         }
 
         // Deserialize the JSON data into a list of Communication objects
-        List<Communication> conversations = objectMapper.readValue(file, new TypeReference<List<Communication>>() {});
+        List<Communication> conversations = objectMapper.readValue(file, new TypeReference <List<Communication>>() {});
 
         return conversations; // Return the list of loaded conversations
     }
@@ -47,4 +47,4 @@ public class ConversationService {
         return true; // Return true if the conversations are saved successfully
     }
 }
-
+*/
