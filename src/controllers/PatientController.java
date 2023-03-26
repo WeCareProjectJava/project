@@ -4,72 +4,144 @@
  */
 package controllers;
 
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 /**
  *
  * @author eya_o
  */
+public class PatientController {
 
-
-import Services.ChatClient;
-import  Services.ChatListener;
-import models.Message;
-import Services.UserType;
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-public class PatientController  {
-    /*@FXML
-    private TextArea chatArea;
     @FXML
-    private TextField messageField;
+    private TextField email;
 
-    private ChatClient chatClient;
-    private String patientEmail;
+    @FXML
+    private TextField firstName;
 
-    public void initialize(String patientEmail) {
-        this.patientEmail = patientEmail;
+    @FXML
+    private TextField lastName;
 
+    @FXML
+    private Button open;
+
+    @FXML
+    private PasswordField password;
+
+    @FXML
+    private TextField phoneNumber;
+
+    @FXML
+    private TextField username;
+
+    @FXML
+    private ComboBox combo;
+
+    @FXML
+    public void initialize() {
+        ObservableList<String> list = FXCollections.observableArrayList("doctor", "patient");
+        combo.setItems(list);
+    }
+
+    Connection connect;
+    PreparedStatement statement;
+    ResultSet result;
+
+    public Connection connectDb() {
         try {
-            chatClient = new ChatClient("localhost", 3000, this);
-            chatClient.connect(patientEmail, UserType.PATIENT);
-        } catch (IOException e) {
-            showErrorAlert("Connection Error", "Failed to connect to the chat server.");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost/wecare_db", "root", "27Dec02!*12!!");
+            return connect;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
+
     }
 
     @FXML
-    public void sendMessage() {
-        String messageText = messageField.getText();
-        if (!messageText.isBlank()) {
-            Message message = new Message(patientEmail, "doctor@example.com", messageText);
-            try {
-                chatClient.sendMessage(message);
-            } catch (IOException ex) {
-                Logger.getLogger(PatientController.class.getName()).log(Level.SEVERE, null, ex);
+    void Open(ActionEvent event) {
+
+        String selectValue = (String) combo.getSelectionModel().getSelectedItem();
+
+        connect = connectDb();
+        try {
+
+            String sql = "INSERT INTO users(first_name,last_name,email,password,username,phone_number,role) VALUES(?,?,?,?,?,?,?)";
+            statement = connect.prepareStatement(sql);
+
+            statement.setString(1, firstName.getText());
+            statement.setString(2, lastName.getText());
+            statement.setString(3, email.getText());
+            statement.setString(4, password.getText());
+            statement.setString(5, username.getText());
+            statement.setString(6, phoneNumber.getText());
+            statement.setString(7, selectValue);
+            int result = statement.executeUpdate();
+            if (result > 0) {
+                if (selectValue == "patient") {
+                    try {
+
+                        open.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("/Views/PatientSignUp.fxml"));
+
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+
+                        stage.setScene(scene);
+
+                        stage.show();
+     
+                        
+
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+
+                } else if (selectValue == "doctor") {
+                    try {
+                        open.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("/Views/hello-view.fxml"));
+
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+
+                        stage.setScene(scene);
+
+                        stage.show();
+
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+                System.out.println("okay");
+            } else {
+                System.out.println("no");
             }
-            chatArea.appendText("Patient: " + messageText + "\n");
-            messageField.clear();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
 
-    @Override
-    public void onMessageReceived(Message message) {
-        chatArea.appendText("Doctor: " + message.getContent() + "\n");
     }
-
-    private void showErrorAlert(String title, String content) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }*/
 }
-

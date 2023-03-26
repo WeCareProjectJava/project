@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InformationPatient">
+   <children>
+      <AnchorPane prefHeight="105.0" prefWidth="520.0" style="-fx-background-color: #d2c5f0;">
+         <children>
+            <Label layoutX="134.0" layoutY="42.0" text="Continue Creating your profile!">
+               <font>
+                  <Font name="Eras Demi ITC" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="48.0" layoutY="145.0" text="Please provide your health condition" />
+      <TextField fx:id="healthCondition" layoutX="46.0" layoutY="172.0" prefHeight="25.0" prefWidth="410.0" />
+      <Label layoutX="48.0" layoutY="216.0" text="Blood Type" />
+      <TextField fx:id="bloodType" layoutX="55.0" layoutY="244.0" prefHeight="25.0" prefWidth="410.0" />
+      <TextField fx:id="medications" layoutX="54.0" layoutY="356.0" prefHeight="25.0" prefWidth="410.0" />
+      <Label layoutX="57.0" layoutY="329.0" text="Medications" />
+      <TextField fx:id="allergies" layoutX="59.0" layoutY="295.0" prefHeight="25.0" prefWidth="410.0" />
+      <Label layoutX="55.0" layoutY="278.0" text="Allergies" />
+      <Label layoutX="57.0" layoutY="400.0" text="Medical Insurrance" />
+      <TextField fx:id="medicalInsurrance" layoutX="55.0" layoutY="423.0" prefHeight="25.0" prefWidth="410.0" />
+      <Label layoutX="50.0" layoutY="457.0" prefHeight="17.0" prefWidth="109.0" text="Emergency Contact:" />
+      <Button fx:id="save" layoutX="196.0" layoutY="560.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="109.0" text="Save" />
+      <Label layoutX="60.0" layoutY="487.0" prefHeight="17.0" prefWidth="109.0" text="Name" />
+      <Label layoutX="60.0" layoutY="518.0" prefHeight="17.0" prefWidth="109.0" text="Phone Number" />
+      <TextField fx:id="phoneNumber" layoutX="163.0" layoutY="514.0" prefHeight="25.0" prefWidth="157.0" />
+      <TextField fx:id="name" layoutX="122.0" layoutY="483.0" prefHeight="25.0" prefWidth="309.0" />
+   </children>
+</AnchorPane>
