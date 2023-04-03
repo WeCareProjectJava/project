@@ -32,7 +32,7 @@
       <TextField fx:id="phoneNumber" layoutX="52.0" layoutY="443.0" prefHeight="25.0" prefWidth="400.0" />
       <Label layoutX="52.0" layoutY="515.0" text="you are a " />
       <Button fx:id="open" layoutX="34.0" layoutY="554.0" mnemonicParsing="false" onAction="#Open" text="Continue" />
-      <Button layoutX="408.0" layoutY="554.0" mnemonicParsing="false" text="Cancel" />
+      <Button fx:id="returnButton" layoutX="429.0" layoutY="554.0" mnemonicParsing="false" onAction="#Return" prefHeight="25.0" prefWidth="65.0" text="Cancel" />
       <PasswordField fx:id="password" layoutX="50.0" layoutY="321.0" prefHeight="25.0" prefWidth="400.0" />
       <ComboBox fx:id="combo" layoutX="177.0" layoutY="511.0" prefWidth="150.0" />
    </children>

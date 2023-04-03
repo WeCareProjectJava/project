@@ -15,13 +15,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #b4e4fb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DoctorController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfedfb" height="431.0" layoutX="39.0" layoutY="52.0" opacity="0.46" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfedfb" height="431.0" layoutX="45.0" layoutY="49.0" opacity="0.46" stroke="BLACK" strokeType="INSIDE" width="640.0" />
       <Text fill="#125975" fontSmoothingType="LCD" layoutX="208.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctors Registration Form" underline="true" wrappingWidth="284.13671875">
          <font>
             <Font name="Wingdings 3" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="save" layoutX="304.0" layoutY="468.0" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="148.0" style="-fx-background-color: #f28500;" text="Save Informations" textFill="#fcf9f9">
+      <Button fx:id="save" layoutX="315.0" layoutY="460.0" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="148.0" style="-fx-background-color: #f28500;" text="Save Informations" textFill="#fcf9f9">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

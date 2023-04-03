@@ -55,7 +55,8 @@ public class PatientController {
 
     @FXML
     private ComboBox combo;
-
+  @FXML
+    private Button returnButton;
     @FXML
     public void initialize() {
         ObservableList<String> list = FXCollections.observableArrayList("doctor", "patient");
@@ -110,9 +111,6 @@ public class PatientController {
                         stage.setScene(scene);
 
                         stage.show();
-     
-                        
-
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -144,4 +142,28 @@ public class PatientController {
         }
 
     }
-}
+    
+     @FXML
+    void Return(ActionEvent event) {
+         try {
+                        returnButton.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("/Views/sign-in interface.fxml"));
+
+                        Scene scene = new Scene(root);
+                        Stage stage = new Stage();
+
+                        stage.setScene(scene);
+
+                        stage.show();
+
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+        
+    }
+    }
+    
+    
+    
+    
+

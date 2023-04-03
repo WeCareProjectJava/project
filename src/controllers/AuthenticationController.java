@@ -42,7 +42,7 @@ public class AuthenticationController {
     private Label signup;
 
     @FXML
-    private TextField username;
+    public TextField username;
     Connection connect;
     PreparedStatement statement;
     ResultSet result;
@@ -111,65 +111,3 @@ public class AuthenticationController {
 
 }
 
-/*  @FXML
-    private TextField emailField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private ComboBox<UserType> userTypeComboBox;
-
-    private UserServices userService;
-
-    public void initialize() {
-        userService = new UserServices();
-        userTypeComboBox.getItems().addAll(UserType.values());
-        userTypeComboBox.getSelectionModel().select(UserType.PATIENT);
-    }
-  @FXML
-    public void login() {
-       // String email = emailField.getText();
-       // String password = passwordField.getText();
-        //UserType userType = userTypeComboBox.getValue();
-
-        User user = userService.login(email, password, userType);
-        if (user != null) {
-            openMainView(user);
-        } else {
-            showErrorAlert("Login Failed", "Invalid email or password.");
-        }
-    }
-
-    private void openMainView(User user) {
-        try {
-            FXMLLoader loader;
-            if (user instanceof Patient) {
-                loader = new FXMLLoader(getClass().getResource("/com/yourpackage/views/patient.fxml"));
-            } else {
-                loader = new FXMLLoader(getClass().getResource("/com/yourpackage/views/doctor.fxml"));
-            }
-            Parent root = loader.load();
-            Stage stage = (Stage) emailField.getScene().getWindow();
-
-            if (user instanceof Patient) {
-                PatientController controller = loader.getController();
-                controller.initialize(user.getEmail());
-            } else {
-                DoctorController controller = loader.getController();
-                controller.initialize(user.getEmail());
-            }
-
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            showErrorAlert("Error", "Failed to load the main view.");
-        }
-    }
-
-    private void showErrorAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
- */

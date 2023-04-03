@@ -143,10 +143,7 @@ public class DoctorController {
         
     }
   
-    
-    
-
-    @FXML
+     @FXML
     public void initialize() {
         ObservableList<String> list = FXCollections.observableArrayList("dermatho", "generaliste", "cardio");
         comb.setItems(list);
@@ -156,49 +153,3 @@ public class DoctorController {
 
 }
 
-/* @FXML
-    private TextArea chatArea;
-    @FXML
-    private TextField messageField;
-
-    private ChatClient chatClient;
-    private String doctorEmail;
-
-    public void initialize(String doctorEmail) {
-        this.doctorEmail = doctorEmail;
-
-        try {
-            chatClient = new ChatClient("localhost", 3000, this);
-            chatClient.connect(doctorEmail, UserType.DOCTOR);
-        } catch (IOException e) {
-            showErrorAlert("Connection Error", "Failed to connect to the chat server.");
-        }
-    }
-
-    @FXML
-    public void sendMessage() {
-        String messageText = messageField.getText();
-        if (!messageText.isBlank()) {
-            Message message = new Message(doctorEmail, "patient@example.com", messageText);
-            try {
-                chatClient.sendMessage(message);
-            } catch (IOException ex) {
-                Logger.getLogger(DoctorController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            chatArea.appendText("Doctor: " + messageText + "\n");
-            messageField.clear();
-        }
-    }
-
-    @Override
-    public void onMessageReceived(Message message) {
-        chatArea.appendText("Patient: " + message.getContent() + "\n");
-    }
-
-    private void showErrorAlert(String title, String content) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }*/
