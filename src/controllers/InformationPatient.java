@@ -87,7 +87,7 @@ public class InformationPatient {
                 try {
                     System.out.println("okay");
                     save.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("/Views/chat_interface.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/Views/Room.fxml"));
 
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();

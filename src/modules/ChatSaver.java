@@ -14,7 +14,7 @@ import java.io.IOException;
  * @author eya_o
  */
 public class ChatSaver {
-    private static final String CHAT_FOLDER = "chats/";
+/*    private static final String CHAT_FOLDER = "chats/";
 
     public static void saveChat(Chat chat) throws IOException {
         // create the chat folder if it doesn't exist
@@ -35,4 +35,5 @@ public class ChatSaver {
         }
         writer.close();
     }
+*/
 }

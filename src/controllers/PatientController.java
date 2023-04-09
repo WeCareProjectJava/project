@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import Client.Controller;
+import Client.User;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -101,7 +103,10 @@ public class PatientController {
             if (result > 0) {
                 if (selectValue == "patient") {
                     try {
-
+                         Controller.username=this.username.getText();
+                         Controller.password=this.password.getText();
+                         User x = new User(this.username.getText(),lastName.getText() ,this.password.getText(),email.getText(),"male",phoneNumber.getText());
+                           Controller.users.add(x);
                         open.getScene().getWindow().hide();
                         Parent root = FXMLLoader.load(getClass().getResource("/Views/PatientSignUp.fxml"));
 
@@ -117,6 +122,10 @@ public class PatientController {
 
                 } else if (selectValue == "doctor") {
                     try {
+                            Controller.username=this.username.getText();
+                            Controller.password=this.password.getText();
+                            User x = new User(this.username.getText(),lastName.getText() ,this.password.getText(),email.getText(),"male",phoneNumber.getText());
+                           Controller.users.add(x);
                         open.getScene().getWindow().hide();
                         Parent root = FXMLLoader.load(getClass().getResource("/Views/hello-view.fxml"));
 

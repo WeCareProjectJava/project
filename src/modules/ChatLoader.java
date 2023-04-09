@@ -17,13 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatLoader {
-    private static final String CHAT_FOLDER = "chats/";
+   /* private static final String CHAT_FOLDER = "chats/";
 
     public static List<Message> loadChat(LocalDateTime chatDate) throws IOException {
         List<Message> messages = new ArrayList<>();
 
-        // create the file name using the chat date
-        String fileName = CHAT_FOLDER + chatDate.getTime() + ".txt";
+        create the file name using the chat date
+       String fileName = CHAT_FOLDER + chatDate.getTime() + ".txt";
         File file = new File(fileName);
 
         // read the messages from the file line by line
@@ -41,5 +41,5 @@ public class ChatLoader {
         reader.close();
 
         return messages;
-    }
+    }*/
 }

@@ -8,6 +8,8 @@ package controllers;
  *
  * @author eya_o
  */
+import Client.*;
+import static Client.Controller.loggedInUser;
 import java.sql.*;
 
 import javafx.scene.control.Alert;
@@ -68,11 +70,18 @@ public class AuthenticationController {
 
             statement.setString(1, username.getText());
             statement.setString(2, password.getText());
+            Controller.username=this.username.getText();
+            Controller.password=this.password.getText();
+            User x = new User(Controller.username,Controller.password);
+            Controller.users.add(x);
+           
+
+
             result = statement.executeQuery();
             if (result.next()) {
                 //JOptionPane.showMessageDialog(null,"successefully UserName/Password","macroman message",JOptionPane.INFORMATION_MESSAGE);
                 SignIn.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("/Views/chat_interface.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/Views/Room.fxml"));
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();

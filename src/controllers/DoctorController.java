@@ -8,6 +8,9 @@ package controllers;
  *
  * @author eya_o
  */
+import Client.Controller;
+import static Client.Controller.username;
+import Client.User;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -114,15 +117,20 @@ public class DoctorController {
                statement.setString(6,description.getText());
                 statement.setString(7,adress.getText());
                 int  result = statement.executeUpdate();
+                 
+            User x = new User(Controller.username,Controller.password);
+            Controller.users.add(x);
                 if(result>0){
                     System.out.println("okay");
                     try {
                     System.out.println("okay");
                     save.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("/Views/chat_interface.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("/Views/Room.fxml"));
                     
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
+                    stage.setTitle(Controller.username + "");
+
 
                     stage.setScene(scene);
 
