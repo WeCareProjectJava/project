@@ -9,7 +9,7 @@ package controllers;
  * @author eya_o
  */
 import Client.*;
-import static Client.Controller.loggedInUser;
+
 import java.sql.*;
 
 import javafx.scene.control.Alert;
@@ -71,15 +71,20 @@ public class AuthenticationController {
             statement.setString(1, username.getText());
             statement.setString(2, password.getText());
             Controller.username=this.username.getText();
-            Controller.password=this.password.getText();
-            User x = new User(Controller.username,Controller.password);
-            Controller.users.add(x);
            
 
 
             result = statement.executeQuery();
             if (result.next()) {
-                //JOptionPane.showMessageDialog(null,"successefully UserName/Password","macroman message",JOptionPane.INFORMATION_MESSAGE);
+                    String name = result.getString("first_name");
+                    String email = result.getString("email");
+                    String phone = (String)result.getString("phone_number");
+                    String pass = result.getString("password");
+                    String status = result.getString("role");
+
+                     User x = new User(name,name ,pass,email,"male",phone,status);
+                    Controller.users.add(x);
+
                 SignIn.getScene().getWindow().hide();
                 Parent root = FXMLLoader.load(getClass().getResource("/Views/Room.fxml"));
 
@@ -91,7 +96,7 @@ public class AuthenticationController {
                 stage.show();
 
             } else {
-                JOptionPane.showMessageDialog(null, "Wrong UserName/Password", "macroman message", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Wrong UserName/Password", "message", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
             e.printStackTrace();

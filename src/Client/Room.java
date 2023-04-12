@@ -36,7 +36,7 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static Client.Controller.loggedInUser;
+
 import static Client.Controller.users;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -65,7 +65,7 @@ public class Room extends Thread implements Initializable {
     @FXML
     public Label phoneNo;
     @FXML
-    public Label gender;
+    public Label Status;
     @FXML
     public Pane profile;
     @FXML
@@ -87,7 +87,7 @@ public class Room extends Thread implements Initializable {
 
 
 
-    public void connectSocket() {
+  public void connectSocket() {
         try {
             socket = new Socket("localhost", 100);
             System.out.println("Socket is connected with server!");
@@ -154,7 +154,9 @@ public class Room extends Thread implements Initializable {
                  email.setText(user.email);
                 email.setOpacity(1);
                 phoneNo.setText(user.phoneNo);
-               gender.setText(user.gender);
+               Status.setText(user.status);
+               
+
             }
         }
     }
@@ -173,7 +175,7 @@ public class Room extends Thread implements Initializable {
         msgRoom.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
         msgRoom.appendText("Me: " + msg + "\n");
         msgField.setText("");
-        if(msg.equalsIgnoreCase("BYE") || (msg.equalsIgnoreCase("logout"))) {
+        if(msg.equalsIgnoreCase("/BYE") || (msg.equalsIgnoreCase("/logout"))) {
             System.exit(0);
         }
     }
@@ -217,15 +219,8 @@ public class Room extends Thread implements Initializable {
         connectSocket();
 
         showProPic.setStroke(Color.valueOf("#90a4ae"));
-        Image image;
-      /*if(Controller.gender.equalsIgnoreCase("Male")) 
-            image = new Image("icons/user.png", false);
-        } else {
-            image = new Image("icons/female.png", false);
-            proImage.setImage(image);
-        }*/
-       // showProPic.setFill(new ImagePattern(image));
-        clientName.setText(Controller.username);
+       
+    clientName.setText(Controller.username);
     }
       @FXML
     void Exit(MouseEvent event) {

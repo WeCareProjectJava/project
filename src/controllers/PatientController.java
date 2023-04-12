@@ -105,7 +105,7 @@ public class PatientController {
                     try {
                          Controller.username=this.username.getText();
                          Controller.password=this.password.getText();
-                         User x = new User(this.username.getText(),lastName.getText() ,this.password.getText(),email.getText(),"male",phoneNumber.getText());
+                         User x = new User(this.username.getText(),lastName.getText() ,this.password.getText(),email.getText(),"male",phoneNumber.getText(),"Patient");
                            Controller.users.add(x);
                         open.getScene().getWindow().hide();
                         Parent root = FXMLLoader.load(getClass().getResource("/Views/PatientSignUp.fxml"));
@@ -124,7 +124,7 @@ public class PatientController {
                     try {
                             Controller.username=this.username.getText();
                             Controller.password=this.password.getText();
-                            User x = new User(this.username.getText(),lastName.getText() ,this.password.getText(),email.getText(),"male",phoneNumber.getText());
+                            User x = new User(this.username.getText(),this.username.getText() ,this.password.getText(),email.getText(),"male",phoneNumber.getText(),"Doctor");
                            Controller.users.add(x);
                         open.getScene().getWindow().hide();
                         Parent root = FXMLLoader.load(getClass().getResource("/Views/hello-view.fxml"));
